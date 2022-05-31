@@ -1,0 +1,2 @@
+class CvTemplate < ApplicationRecord
+end

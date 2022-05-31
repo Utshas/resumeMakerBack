@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :last_name
       t.string :password
       t.string :email
-      t.string :qualification_level
+      t.integer :qualification_level
       t.text :qualification_degree
       t.string :user_type
       t.float :experience_year
