@@ -1,0 +1,24 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.6
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - ./tmp/postgresql/data:/var/lib/postgresql/data
+  web:
+    build:
+      context: .
+      dockerfile: docker-web
+    command: "rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/railsapp
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    environment:
+      EDITOR: nano # however, nano is not installed.
+    # Please install it by running `apt install nano` everytime.
+    # environment: # test basic auth for staging
+    #   - ENABLE_BASIC_AUTH=true
