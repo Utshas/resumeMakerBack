@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   resources :jobs
   resources :cv_templates
   resources :skills
-  devise_for :users, controllers: {
+  devise_for :users,
+    defaults: { format: :json },
+    controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
   }

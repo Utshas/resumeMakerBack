@@ -5,7 +5,7 @@ class Users::SessionsController < Devise::SessionsController
     if current_user
       render json: { message: 'Logged.' }, status: :ok
     else
-      render json: { message: 'You have to login first' }, status: :ok
+      render json: { message: resource.errors, error: true }, status: :ok
     end
   end
   def respond_to_on_destroy
