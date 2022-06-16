@@ -5,6 +5,7 @@ class Users::SessionsController < Devise::SessionsController
     if current_user
       render json: { message: 'Logged.' }, status: :ok
     else
+      logger.debug("-------#{resource.errors}")
       render json: { message: resource.errors, error: true }, status: :ok
     end
   end
