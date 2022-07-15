@@ -3,9 +3,8 @@ class Users::SessionsController < Devise::SessionsController
   private
   def respond_with(resource, _opts = {})
     if current_user
-      render json: { message: 'Logged.' }, status: :ok
+      render json: { message: 'Logged.', user: current_user }, status: :ok
     else
-      logger.debug("-------#{resource.errors}")
       render json: { message: resource.errors, error: true }, status: :ok
     end
   end
